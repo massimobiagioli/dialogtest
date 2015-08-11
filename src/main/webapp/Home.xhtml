@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>DialogTest</title>	
+</h:head>
+<h:body>
+	<h2>Dialog Test</h2>
+	<h:form>		
+		
+		<p:outputPanel id="dialog1">		
+			<p:dialog widgetVar="dlgDettaglio1">
+				#{dipendentiBean}
+				#{dipendentiBean.counter}
+				<p:dataList value="#{dipendentiBean.dipendenti}" var="dipendente" itemType="disc">
+					#{dipendente}
+				</p:dataList>		
+				<p:commandButton
+					value="Show 2"
+					update="dialog2"
+					action="#{dipendentiBean.showDialog2}"			
+				/>		
+			</p:dialog>
+		</p:outputPanel>
+		
+		<p:outputPanel id="dialog2">
+			<p:dialog widgetVar="dlgDettaglio2">
+				#{dipendentiBean}
+				#{dipendentiBean.counter}
+				<p:dataList value="#{dipendentiBean.dipendenti}" var="dipendente" itemType="disc">
+					#{dipendente}
+				</p:dataList>					
+			</p:dialog>
+		</p:outputPanel>
+				
+		<p:commandButton
+			value="Show 1"
+			update="dialog1"
+			action="#{dipendentiBean.showDialog1}"			
+		/>		
+		
+	</h:form>
+</h:body>
+</html>
